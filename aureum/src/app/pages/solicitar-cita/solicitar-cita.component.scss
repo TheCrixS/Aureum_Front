@@ -1,0 +1,204 @@
+.cita-container {
+  min-height: 100vh;
+  background: #1a1a2e;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px;
+}
+
+.form-card, .success-card {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 32px;
+  h1 { color: #c9a84c; font-size: 1.8rem; margin: 0 0 8px; }
+  p { color: #888; font-size: 0.9rem; }
+}
+
+.form-section {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  color: #c9a84c;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0f3460;
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  &:focus { outline: none; border-color: #c9a84c; }
+  &.error { border-color: #e74c3c; }
+}
+
+.servicio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.servicio-card {
+  background: #0f3460;
+  border: 2px solid #0f3460;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { border-color: #c9a84c55; }
+  &.selected { border-color: #c9a84c; background: #c9a84c22; }
+  .servicio-nombre { color: #fff; font-weight: 600; font-size: 0.9rem; }
+  .servicio-info { color: #c9a84c; font-size: 0.8rem; margin: 4px 0; }
+  .servicio-desc { color: #888; font-size: 0.75rem; }
+}
+
+.barbero-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.barbero-card {
+  background: #0f3460;
+  border: 2px solid #0f3460;
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  &:hover { border-color: #c9a84c55; }
+  &.selected { border-color: #c9a84c; background: #c9a84c22; }
+  .barbero-avatar { font-size: 2rem; }
+  .barbero-nombre { color: #fff; font-size: 0.85rem; margin-top: 8px; font-weight: 600; }
+}
+
+.horario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.horario-slot {
+  background: #0f3460;
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { border-color: #c9a84c55; }
+  &.selected { border-color: #c9a84c; background: #c9a84c22; color: #c9a84c; font-weight: 700; }
+}
+
+.resumen-previo {
+  background: #0f3460;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  h3 { color: #c9a84c; margin: 0 0 12px; font-size: 1rem; }
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #ffffff11;
+  span { color: #888; font-size: 0.85rem; }
+  strong { color: #fff; font-size: 0.85rem; }
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  flex: 1;
+  background: #c9a84c;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover:not(:disabled) { background: #d4b460; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.btn-secondary {
+  flex: 0 0 100px;
+  background: transparent;
+  color: #888;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { border-color: #e74c3c; color: #e74c3c; }
+}
+
+.error-banner {
+  background: #e74c3c22;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  color: #e74c3c;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.loading {
+  color: #c9a84c;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  animation: pulse 1s infinite;
+}
+
+.no-disponibles {
+  color: #888;
+  font-size: 0.85rem;
+  padding: 8px 0;
+}
+
+.success-card {
+  text-align: center;
+  .success-icon { font-size: 4rem; margin-bottom: 16px; }
+  h2 { color: #c9a84c; margin: 0 0 8px; }
+  p { color: #888; margin-bottom: 24px; }
+  .estado-badge { color: #2ecc71; }
+}
+
+.resumen {
+  background: #0f3460;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
