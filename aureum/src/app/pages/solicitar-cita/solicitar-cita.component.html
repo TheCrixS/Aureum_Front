@@ -47,6 +47,9 @@
         [(ngModel)]="fecha"
         [min]="fechaMinima"
         (change)="onFechaChange()">
+      <p class="aviso-dias" *ngIf="barberoId && diasNoLaborales.length > 0">
+        ⚠️ Este barbero no trabaja los: {{ obtenerNombresDias(diasNoLaborales) }}
+      </p>
     </div>
 
     <!-- PASO 3: BARBERO (solo si hay servicio y fecha) -->

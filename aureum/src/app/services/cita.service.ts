@@ -31,6 +31,12 @@ export class CitaService {
       `${this.api}/barberos/${barberoId}/horarios-disponibles`, { params });
   }
 
+  getDiasLaboralesBarbero(barberoId: number): Observable<number[]> {
+    return this.http.get<number[]>(
+      `${this.api}/barberos/${barberoId}/dias-laborales`
+    );
+  }
+
   crearCita(cita: CitaRequest): Observable<CitaResponse> {
     return this.http.post<CitaResponse>(`${this.api}/citas`, cita);
   }

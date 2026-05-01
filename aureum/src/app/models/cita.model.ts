@@ -10,6 +10,7 @@ export interface BarberoDisponible {
   id: number;
   nombre: string;
   telefono: string;
+  diasLaborales?: number[];
 }
 
 export interface HorarioDisponible {

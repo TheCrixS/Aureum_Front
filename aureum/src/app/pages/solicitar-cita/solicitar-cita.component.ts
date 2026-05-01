@@ -24,6 +24,7 @@ export class SolicitarCitaComponent implements OnInit, OnDestroy {
   fecha: string = '';
   horaInicio: string = '';
   notas: string = '';
+  diasNoLaborales: number[] = [];
 
   // Signals — HTTP los actualiza; signals notifican el scheduler automáticamente
   servicios = signal<Servicio[]>([]);
@@ -102,9 +103,38 @@ export class SolicitarCitaComponent implements OnInit, OnDestroy {
   onBarberoChange(): void {
     this.horaInicio = '';
     this.horarios.set([]);
-    if (this.barberoId && this.fecha && this.servicioId) {
-      this.cargarHorarios();
+    this.diasNoLaborales = [];
+    if (this.barberoId) {
+      const barbero = this.barberos().find(b => b.id === Number(this.barberoId));
+      if (barbero?.diasLaborales) {
+        this.calcularDiasNoLaborales(barbero.diasLaborales);
+      }
+      if (this.fecha && this.servicioId) {
+        if (this.esFechaDeshabilitada(this.fecha)) {
+          this.fecha = '';
+          this.errorMensaje.set('El barbero seleccionado no trabaja ese día. Por favor selecciona otra fecha.');
+        } else {
+          this.cargarHorarios();
+        }
+      }
     }
+  }
+
+  esFechaDeshabilitada(fecha: string): boolean {
+    if (!fecha) return false;
+    const diaSemana = new Date(fecha + 'T00:00:00').getDay();
+    const diaISO = diaSemana === 0 ? 7 : diaSemana;
+    return this.diasNoLaborales.includes(diaISO);
+  }
+
+  calcularDiasNoLaborales(diasLaborales: number[]): void {
+    const todosDias = [1, 2, 3, 4, 5, 6, 7];
+    this.diasNoLaborales = todosDias.filter(d => !diasLaborales.includes(d));
+  }
+
+  obtenerNombresDias(dias: number[]): string {
+    const nombres = ['', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    return dias.map(d => nombres[d]).join(', ');
   }
 
   cargarBarberos(): void {
@@ -197,6 +227,7 @@ export class SolicitarCitaComponent implements OnInit, OnDestroy {
     this.fecha = '';
     this.horaInicio = '';
     this.notas = '';
+    this.diasNoLaborales = [];
     this.barberos.set([]);
     this.horarios.set([]);
     this.cargandoBarberos.set(false);
