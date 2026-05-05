@@ -1,0 +1,18 @@
+<h2>Crear Barbero</h2>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <label>Nombres</label>
+  <input type="text" formControlName="nombres">
+  <label>Apellidos</label>
+  <input type="text" formControlName="apellidos">
+  <label>Tipo Identificacion</label>
+  <input type="text" formControlName="tipoIdentificacion">
+  <label>Identificacion</label>
+  <input type="number" formControlName="identificacion">
+  <label>Email</label>
+  <input type="email" formControlName="email">
+  <label>telefono</label>
+  <input type="number" formControlName="telefono">
+  <label>Estado</label>
+  <input type="checkbox" formControlName="estado">
+  <button type="submit">Guardar</button>
+</form>
