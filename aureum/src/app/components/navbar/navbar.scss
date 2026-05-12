@@ -1,0 +1,26 @@
+:host ::ng-deep .barra {
+  background: #1f2933;
+  border: 0;
+  border-radius: 0;
+  padding: 16px 18%;
+}
+
+.marca,
+.enlace {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.marca {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.enlace {
+  color: #d7dde5;
+}
+
+.enlace.activo {
+  color: #ffffff;
+  font-weight: 600;
+}
