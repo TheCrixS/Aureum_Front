@@ -1,0 +1,118 @@
+<div class="cita-container">
+
+  <div class="success-card" *ngIf="citaCreada()">
+    <div class="success-icon">✅</div>
+    <h2>¡Cita Agendada!</h2>
+    <p>{{ citaCreada()!.mensaje }}</p>
+    <div class="resumen">
+      <div class="resumen-item"><span>Servicio</span><strong>{{ citaCreada()!.servicioNombre }}</strong></div>
+      <div class="resumen-item"><span>Barbero</span><strong>{{ citaCreada()!.barberoNombre }}</strong></div>
+      <div class="resumen-item"><span>Fecha</span><strong>{{ citaCreada()!.fecha }}</strong></div>
+      <div class="resumen-item"><span>Hora</span><strong>{{ citaCreada()!.horaInicio }} - {{ citaCreada()!.horaFin }}</strong></div>
+      <div class="resumen-item"><span>Precio</span><strong>$ {{ citaCreada()!.precio | number }}</strong></div>
+      <div class="resumen-item"><span>Estado</span><strong class="estado-badge">{{ citaCreada()!.estado }}</strong></div>
+    </div>
+    <button class="btn-primary" (click)="reiniciarFormulario()">Agendar otra cita</button>
+  </div>
+
+  <div class="form-card" *ngIf="!citaCreada()">
+    <div class="form-header">
+      <h1>✂️ Solicitar Cita</h1>
+      <p>Agenda tu visita a Aureum Barbería</p>
+    </div>
+
+    <div class="error-banner" *ngIf="errorMensaje()">
+      ⚠️ {{ errorMensaje() }}
+    </div>
+
+    <!-- PASO 1: SERVICIO -->
+    <div class="form-section">
+      <label class="form-label">1. Selecciona un servicio *</label>
+      <div class="servicio-grid">
+        <div class="servicio-card"
+          *ngFor="let s of servicios()"
+          [class.selected]="servicioId === s.id"
+          (click)="servicioId = s.id; onServicioChange()">
+          <div class="servicio-nombre">{{ s.nombre }}</div>
+          <div class="servicio-info">{{ s.duracionMinutos }} min · $ {{ s.precioBase | number }}</div>
+          <div class="servicio-desc">{{ s.descripcion }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: FECHA (solo si hay servicio) -->
+    <div class="form-section" *ngIf="servicioId">
+      <label class="form-label">2. Selecciona la fecha *</label>
+      <input type="date" class="form-input"
+        [(ngModel)]="fecha"
+        [min]="fechaMinima"
+        (change)="onFechaChange()">
+      <p class="aviso-dias" *ngIf="barberoId && diasNoLaborales.length > 0">
+        ⚠️ Este barbero no trabaja los: {{ obtenerNombresDias(diasNoLaborales) }}
+      </p>
+    </div>
+
+    <!-- PASO 3: BARBERO (solo si hay servicio y fecha) -->
+    <div class="form-section" *ngIf="servicioId && fecha">
+      <label class="form-label">3. Selecciona tu barbero *</label>
+      <div class="loading" *ngIf="cargandoBarberos()">Buscando barberos disponibles...</div>
+      <div class="barbero-grid" *ngIf="!cargandoBarberos()">
+        <div class="barbero-card"
+          *ngFor="let b of barberos()"
+          [class.selected]="barberoId === b.id"
+          (click)="barberoId = b.id; onBarberoChange()">
+          <div class="barbero-avatar">💈</div>
+          <div class="barbero-nombre">{{ b.nombre }}</div>
+        </div>
+        <div class="no-disponibles" *ngIf="barberos().length === 0">
+          No hay barberos disponibles para esta fecha.
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 4: HORA (solo si hay barbero) -->
+    <div class="form-section" *ngIf="barberoId">
+      <label class="form-label">4. Selecciona la hora *</label>
+      <div class="loading" *ngIf="cargandoHorarios()">Cargando horarios...</div>
+      <div class="horario-grid" *ngIf="!cargandoHorarios()">
+        <button class="horario-slot"
+          *ngFor="let h of horarios()"
+          [class.selected]="horaInicio === h.horaInicio"
+          (click)="horaInicio = h.horaInicio">
+          {{ h.display }}
+        </button>
+        <div class="no-disponibles" *ngIf="horarios().length === 0">
+          No hay horarios disponibles.
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 5: NOTAS (solo si hay hora) -->
+    <div class="form-section" *ngIf="horaInicio">
+      <label class="form-label">5. Notas adicionales (opcional)</label>
+      <textarea class="form-input" [(ngModel)]="notas" rows="3"
+        placeholder="Ej: Quiero el corte con tijera, sin máquina...">
+      </textarea>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="resumen-previo" *ngIf="formularioValido">
+      <h3>📋 Resumen de tu cita</h3>
+      <div class="resumen-item"><span>Servicio</span><strong>{{ servicioSeleccionado?.nombre }}</strong></div>
+      <div class="resumen-item"><span>Barbero</span><strong>{{ barberoSeleccionado?.nombre }}</strong></div>
+      <div class="resumen-item"><span>Fecha</span><strong>{{ fecha }}</strong></div>
+      <div class="resumen-item"><span>Hora</span><strong>{{ horarioSeleccionado?.display }}</strong></div>
+      <div class="resumen-item"><span>Precio</span><strong>$ {{ servicioSeleccionado?.precioBase | number }}</strong></div>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="form-actions">
+      <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      <button class="btn-primary"
+        [disabled]="!formularioValido || enviando()"
+        (click)="confirmarCita()">
+        {{ enviando() ? 'Agendando...' : 'Confirmar Cita' }}
+      </button>
+    </div>
+  </div>
+</div>
