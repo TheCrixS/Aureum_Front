@@ -1,7 +1,136 @@
+@use 'app/styles/variables' as *;
+
+// === RESET ===
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// === BASE ===
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background-color: #f5f6f8;
+  background-color: $bg-primary;
+  color: $text-primary;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 main {
-  padding-top: 24px;
+  padding-top: $spacing-lg;
+}
+
+// === PRIMENG GLOBAL OVERRIDES ===
+
+.p-card {
+  background: $bg-card !important;
+  color: $text-primary !important;
+  border: none !important;
+  box-shadow: $shadow-card !important;
+  border-radius: $radius-xl !important;
+}
+
+.p-card .p-card-body {
+  padding: $spacing-xl $spacing-lg !important;
+}
+
+.p-inputtext {
+  background: $bg-input !important;
+  border: 2px solid $bg-input !important;
+  color: $text-primary !important;
+  border-radius: $radius-md !important;
+  padding: 12px $spacing-md !important;
+  width: 100%;
+  transition: $transition-base;
+
+  &:focus {
+    border-color: $color-gold !important;
+    box-shadow: 0 0 0 2px rgba($color-gold, 0.2) !important;
+    outline: none !important;
+  }
+
+  &.ng-invalid.ng-dirty {
+    border-color: $color-error !important;
+  }
+
+  &::placeholder {
+    color: $text-secondary !important;
+  }
+}
+
+.p-textarea {
+  background: $bg-input !important;
+  border: 2px solid $bg-input !important;
+  color: $text-primary !important;
+  border-radius: $radius-md !important;
+  padding: 12px $spacing-md !important;
+  width: 100%;
+  transition: $transition-base;
+  resize: vertical;
+
+  &:focus {
+    border-color: $color-gold !important;
+    box-shadow: 0 0 0 2px rgba($color-gold, 0.2) !important;
+    outline: none !important;
+  }
+
+  &.ng-invalid.ng-dirty {
+    border-color: $color-error !important;
+  }
+
+  &::placeholder {
+    color: $text-secondary !important;
+  }
+}
+
+.p-button {
+  background: $color-gold !important;
+  border-color: $color-gold !important;
+  color: $bg-primary !important;
+  font-weight: $font-weight-bold !important;
+  border-radius: $radius-md !important;
+  padding: 12px $spacing-lg !important;
+  transition: $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $color-gold-hover !important;
+    border-color: $color-gold-hover !important;
+  }
+
+  &:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+}
+
+.p-button.p-button-secondary,
+.p-button-secondary .p-button {
+  background: transparent !important;
+  border-color: $bg-input !important;
+  color: $text-secondary !important;
+
+  &:hover:not(:disabled) {
+    border-color: $color-error !important;
+    color: $color-error !important;
+    background: transparent !important;
+  }
+}
+
+.p-checkbox .p-checkbox-box {
+  background: $bg-input !important;
+  border-color: $bg-input !important;
+
+  &.p-highlight {
+    background: $color-gold !important;
+    border-color: $color-gold !important;
+  }
 }

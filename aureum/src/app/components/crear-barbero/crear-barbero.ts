@@ -2,10 +2,14 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { BarberoService } from '../../services/barbero-service';
 import { Barbero } from '../../models/barbero';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-crear-barbero',
-  imports: [ ReactiveFormsModule ],
+  imports: [ ReactiveFormsModule, ButtonModule, CardModule, InputTextModule, CheckboxModule ],
   templateUrl: './crear-barbero.html',
   styleUrl: './crear-barbero.scss',
 })

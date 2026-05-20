@@ -1,52 +1,54 @@
+@use '../../styles/variables' as *;
+
 .cita-container {
   min-height: 100vh;
-  background: #1a1a2e;
+  background: $bg-primary;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px 16px;
+  padding: $spacing-lg $spacing-md;
 }
 
 .form-card, .success-card {
-  background: #16213e;
-  border-radius: 16px;
-  padding: 32px 24px;
+  background: $bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-xl $spacing-lg;
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: $shadow-card;
 }
 
 .form-header {
   text-align: center;
-  margin-bottom: 32px;
-  h1 { color: #c9a84c; font-size: 1.8rem; margin: 0 0 8px; }
-  p { color: #888; font-size: 0.9rem; }
+  margin-bottom: $spacing-xl;
+  h1 { color: $color-gold; font-size: 1.8rem; margin: 0 0 $spacing-sm; }
+  p { color: $text-secondary; font-size: 0.9rem; }
 }
 
 .form-section {
-  margin-bottom: 24px;
+  margin-bottom: $spacing-lg;
 }
 
 .form-label {
   display: block;
-  color: #c9a84c;
-  font-weight: 600;
+  color: $color-gold;
+  font-weight: $font-weight-semibold;
   margin-bottom: 12px;
   font-size: 0.95rem;
 }
 
 .form-input {
   width: 100%;
-  padding: 12px 16px;
-  background: #0f3460;
-  border: 2px solid #0f3460;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 1rem;
+  padding: 12px $spacing-md;
+  background: $bg-input;
+  border: 2px solid $bg-input;
+  border-radius: $radius-md;
+  color: $text-primary;
+  font-size: $font-size-base;
   box-sizing: border-box;
-  transition: border-color 0.2s;
-  &:focus { outline: none; border-color: #c9a84c; }
-  &.error { border-color: #e74c3c; }
+  transition: $transition-base;
+  &:focus { outline: none; border-color: $color-gold; }
+  &.error { border-color: $color-error; }
 }
 
 .servicio-grid {
@@ -56,17 +58,17 @@
 }
 
 .servicio-card {
-  background: #0f3460;
-  border: 2px solid #0f3460;
-  border-radius: 10px;
+  background: $bg-input;
+  border: 2px solid $bg-input;
+  border-radius: $radius-lg;
   padding: 14px;
   cursor: pointer;
-  transition: all 0.2s;
-  &:hover { border-color: #c9a84c55; }
-  &.selected { border-color: #c9a84c; background: #c9a84c22; }
-  .servicio-nombre { color: #fff; font-weight: 600; font-size: 0.9rem; }
-  .servicio-info { color: #c9a84c; font-size: 0.8rem; margin: 4px 0; }
-  .servicio-desc { color: #888; font-size: 0.75rem; }
+  transition: $transition-base;
+  &:hover { border-color: $color-gold-border-hover; }
+  &.selected { border-color: $color-gold; background: $color-gold-dim; }
+  .servicio-nombre { color: $text-primary; font-weight: $font-weight-semibold; font-size: 0.9rem; }
+  .servicio-info { color: $color-gold; font-size: 0.8rem; margin: 4px 0; }
+  .servicio-desc { color: $text-secondary; font-size: $font-size-xs; }
 }
 
 .barbero-grid {
@@ -76,125 +78,125 @@
 }
 
 .barbero-card {
-  background: #0f3460;
-  border: 2px solid #0f3460;
-  border-radius: 10px;
-  padding: 16px 20px;
+  background: $bg-input;
+  border: 2px solid $bg-input;
+  border-radius: $radius-lg;
+  padding: $spacing-md 20px;
   cursor: pointer;
   text-align: center;
-  transition: all 0.2s;
-  &:hover { border-color: #c9a84c55; }
-  &.selected { border-color: #c9a84c; background: #c9a84c22; }
+  transition: $transition-base;
+  &:hover { border-color: $color-gold-border-hover; }
+  &.selected { border-color: $color-gold; background: $color-gold-dim; }
   .barbero-avatar { font-size: 2rem; }
-  .barbero-nombre { color: #fff; font-size: 0.85rem; margin-top: 8px; font-weight: 600; }
+  .barbero-nombre { color: $text-primary; font-size: 0.85rem; margin-top: $spacing-sm; font-weight: $font-weight-semibold; }
 }
 
 .horario-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: $spacing-sm;
 }
 
 .horario-slot {
-  background: #0f3460;
-  border: 2px solid #0f3460;
-  border-radius: 8px;
-  color: #fff;
+  background: $bg-input;
+  border: 2px solid $bg-input;
+  border-radius: $radius-md;
+  color: $text-primary;
   padding: 10px 6px;
   font-size: 0.82rem;
   cursor: pointer;
-  transition: all 0.2s;
-  &:hover { border-color: #c9a84c55; }
-  &.selected { border-color: #c9a84c; background: #c9a84c22; color: #c9a84c; font-weight: 700; }
+  transition: $transition-base;
+  &:hover { border-color: $color-gold-border-hover; }
+  &.selected { border-color: $color-gold; background: $color-gold-dim; color: $color-gold; font-weight: $font-weight-bold; }
 }
 
 .resumen-previo {
-  background: #0f3460;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 24px;
-  h3 { color: #c9a84c; margin: 0 0 12px; font-size: 1rem; }
+  background: $bg-input;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+  h3 { color: $color-gold; margin: 0 0 12px; font-size: $font-size-base; }
 }
 
 .resumen-item {
   display: flex;
   justify-content: space-between;
   padding: 6px 0;
-  border-bottom: 1px solid #ffffff11;
-  span { color: #888; font-size: 0.85rem; }
-  strong { color: #fff; font-size: 0.85rem; }
+  border-bottom: 1px solid $border-subtle;
+  span { color: $text-secondary; font-size: 0.85rem; }
+  strong { color: $text-primary; font-size: 0.85rem; }
 }
 
 .form-actions {
   display: flex;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: $spacing-sm;
 }
 
 .btn-primary {
   flex: 1;
-  background: #c9a84c;
-  color: #1a1a2e;
+  background: $color-gold;
+  color: $bg-primary;
   border: none;
-  border-radius: 8px;
+  border-radius: $radius-md;
   padding: 14px;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
   cursor: pointer;
-  transition: all 0.2s;
-  &:hover:not(:disabled) { background: #d4b460; }
+  transition: $transition-base;
+  &:hover:not(:disabled) { background: $color-gold-hover; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 .btn-secondary {
   flex: 0 0 100px;
   background: transparent;
-  color: #888;
+  color: $text-secondary;
   border: 2px solid #333;
-  border-radius: 8px;
+  border-radius: $radius-md;
   padding: 14px;
-  font-size: 1rem;
+  font-size: $font-size-base;
   cursor: pointer;
-  transition: all 0.2s;
-  &:hover { border-color: #e74c3c; color: #e74c3c; }
+  transition: $transition-base;
+  &:hover { border-color: $color-error; color: $color-error; }
 }
 
 .error-banner {
-  background: #e74c3c22;
-  border: 1px solid #e74c3c;
-  border-radius: 8px;
-  color: #e74c3c;
-  padding: 12px 16px;
+  background: $bg-error;
+  border: 1px solid $color-error;
+  border-radius: $radius-md;
+  color: $color-error;
+  padding: 12px $spacing-md;
   margin-bottom: 20px;
   font-size: 0.9rem;
 }
 
 .loading {
-  color: #c9a84c;
+  color: $color-gold;
   font-size: 0.9rem;
-  padding: 8px 0;
+  padding: $spacing-sm 0;
   animation: pulse 1s infinite;
 }
 
 .no-disponibles {
-  color: #888;
+  color: $text-secondary;
   font-size: 0.85rem;
-  padding: 8px 0;
+  padding: $spacing-sm 0;
 }
 
 .success-card {
   text-align: center;
-  .success-icon { font-size: 4rem; margin-bottom: 16px; }
-  h2 { color: #c9a84c; margin: 0 0 8px; }
-  p { color: #888; margin-bottom: 24px; }
-  .estado-badge { color: #2ecc71; }
+  .success-icon { font-size: 4rem; margin-bottom: $spacing-md; }
+  h2 { color: $color-gold; margin: 0 0 $spacing-sm; }
+  p { color: $text-secondary; margin-bottom: $spacing-lg; }
+  .estado-badge { color: $color-success; }
 }
 
 .resumen {
-  background: #0f3460;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 24px;
+  background: $bg-input;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
   text-align: left;
 }
 
@@ -204,11 +206,11 @@
 }
 
 .aviso-dias {
-  color: #e67e22;
+  color: $color-warning;
   font-size: 0.82rem;
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: #e67e2211;
-  border-radius: 6px;
-  border-left: 3px solid #e67e22;
+  margin-top: $spacing-sm;
+  padding: $spacing-sm 12px;
+  background: $bg-warning;
+  border-radius: $radius-sm;
+  border-left: 3px solid $color-warning;
 }

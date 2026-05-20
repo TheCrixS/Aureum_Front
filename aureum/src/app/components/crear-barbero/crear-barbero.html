@@ -1,18 +1,90 @@
-<h2>Crear Barbero</h2>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <label>Nombres</label>
-  <input type="text" formControlName="nombres">
-  <label>Apellidos</label>
-  <input type="text" formControlName="apellidos">
-  <label>Tipo Identificacion</label>
-  <input type="text" formControlName="tipoIdentificacion">
-  <label>Identificacion</label>
-  <input type="number" formControlName="identificacion">
-  <label>Email</label>
-  <input type="email" formControlName="email">
-  <label>telefono</label>
-  <input type="number" formControlName="telefono">
-  <label>Estado</label>
-  <input type="checkbox" formControlName="estado">
-  <button type="submit">Guardar</button>
-</form>
+<div class="cb-container">
+  <p-card>
+    <h3>Registrar Nuevo Barbero</h3>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="cb-form">
+
+      <div class="cb-row">
+        <div class="cb-campo">
+          <label for="nombres">Nombres</label>
+          <input
+            pInputText
+            id="nombres"
+            type="text"
+            formControlName="nombres"
+            placeholder="Ej: Juan Carlos">
+        </div>
+
+        <div class="cb-campo">
+          <label for="apellidos">Apellidos</label>
+          <input
+            pInputText
+            id="apellidos"
+            type="text"
+            formControlName="apellidos"
+            placeholder="Ej: Gomez Rios">
+        </div>
+      </div>
+
+      <div class="cb-row">
+        <div class="cb-campo">
+          <label for="tipoIdentificacion">Tipo de Identificacion</label>
+          <input
+            pInputText
+            id="tipoIdentificacion"
+            type="text"
+            formControlName="tipoIdentificacion"
+            placeholder="CC, CE, TI...">
+        </div>
+
+        <div class="cb-campo">
+          <label for="identificacion">Numero de Identificacion</label>
+          <input
+            pInputText
+            id="identificacion"
+            type="number"
+            formControlName="identificacion"
+            placeholder="Ej: 1234567890">
+        </div>
+      </div>
+
+      <div class="cb-campo">
+        <label for="email">Correo Electronico</label>
+        <input
+          pInputText
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="correo@ejemplo.com">
+      </div>
+
+      <div class="cb-campo">
+        <label for="telefono">Telefono</label>
+        <input
+          pInputText
+          id="telefono"
+          type="number"
+          formControlName="telefono"
+          placeholder="Ej: 3001234567">
+      </div>
+
+      <div class="cb-campo cb-estado">
+        <p-checkbox
+          formControlName="estado"
+          [binary]="true"
+          inputId="estado">
+        </p-checkbox>
+        <label for="estado">Barbero activo</label>
+      </div>
+
+      <div class="cb-acciones">
+        <p-button
+          type="submit"
+          label="Guardar Barbero"
+          [disabled]="formulario.invalid">
+        </p-button>
+      </div>
+
+    </form>
+  </p-card>
+</div>

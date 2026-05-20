@@ -1,11 +1,19 @@
 <p-toolbar styleClass="barra">
   <ng-template #start>
-    <a class="marca" routerLink="/crear">Gestion Servicios</a>
+    <a class="marca" routerLink="/">Barberia UCentral</a>
   </ng-template>
 
   <ng-template #end>
-    <a class="enlace" routerLink="/crear" routerLinkActive="activo">
-      Nuevo Servicio
-    </a>
+    <nav class="nav-links">
+      <a class="enlace" routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">
+        Solicitar Cita
+      </a>
+      <a class="enlace" routerLink="/crear" routerLinkActive="activo">
+        Registrar Servicio
+      </a>
+      <a class="enlace" routerLink="/crear-barbero" routerLinkActive="activo">
+        Registrar Barbero
+      </a>
+    </nav>
   </ng-template>
 </p-toolbar>

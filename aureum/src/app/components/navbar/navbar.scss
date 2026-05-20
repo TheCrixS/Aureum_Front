@@ -1,26 +1,35 @@
+@use '../../styles/variables' as *;
+
 :host ::ng-deep .barra {
-  background: #1f2933;
+  background: $bg-nav;
   border: 0;
   border-radius: 0;
-  padding: 16px 18%;
+  padding: $spacing-md 18%;
 }
 
 .marca,
 .enlace {
-  color: #ffffff;
+  color: $text-primary;
   text-decoration: none;
 }
 
 .marca {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
 }
 
 .enlace {
-  color: #d7dde5;
+  color: $text-muted;
+  transition: $transition-base;
 }
 
 .enlace.activo {
-  color: #ffffff;
-  font-weight: 600;
+  color: $text-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
 }

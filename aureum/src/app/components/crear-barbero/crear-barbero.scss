@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+
+.cb-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+h3 {
+  margin: 0 0 $spacing-lg;
+  color: $color-gold;
+  font-weight: $font-weight-semibold;
+  font-size: 1.25rem;
+}
+
+.cb-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.cb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cb-campo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-weight: $font-weight-medium;
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.cb-estado {
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing-sm;
+
+  label {
+    color: $text-primary;
+    font-size: $font-size-base;
+    cursor: pointer;
+  }
+}
+
+.cb-acciones {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $spacing-sm;
+}
