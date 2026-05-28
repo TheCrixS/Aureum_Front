@@ -26,6 +26,7 @@ describe('App', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Gestion Servicios');
+    expect(compiled.textContent).toContain('Barberia UCentral');
+    expect(compiled.textContent).toContain('Registrar Servicio');
   });
 });

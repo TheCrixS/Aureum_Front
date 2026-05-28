@@ -8,7 +8,7 @@ import { ServicioBarberia } from '../models/servicio-barberia';
 })
 export class ServicioBarberiaService {
 
-  private apiUrl = '/servicios';
+  private apiUrl = 'http://localhost:8899/api/servicios';
 
   constructor(private http: HttpClient) {
   }
