@@ -5,10 +5,11 @@ import {
   Servicio, BarberoDisponible,
   HorarioDisponible, CitaRequest, CitaResponse
 } from '../models/cita.model';
+import { API_BASE_URL } from '../config/api.config';
 
 @Injectable({ providedIn: 'root' })
 export class CitaService {
-  private api = 'http://localhost:8899/api/api';
+  private api = `${API_BASE_URL}/api/api`;
 
   constructor(private http: HttpClient) {}
 

@@ -35,7 +35,7 @@ describe('ServicioBarberiaService', () => {
 
     service.registrarServicio(servicio).subscribe();
 
-    const request = httpMock.expectOne('http://localhost:8899/api/servicios');
+    const request = httpMock.expectOne('https://aureum-back.onrender.com/api/servicios');
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual(servicio);
     request.flush({

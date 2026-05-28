@@ -1,6 +1,6 @@
 {
   "/servicios": {
-    "target": "http://localhost:8899/api",
+    "target": "https://aureum-back.onrender.com/api",
     "secure": false,
     "changeOrigin": true
   }
